@@ -19,20 +19,24 @@ class MoveWeb(QtWidgets.QWidget):
             event.accept()
 
 
-class OrchidWeb(MoveWeb, Ui_Form):
+class CactusWeb(MoveWeb, Ui_Form):
     def __init__(self):
-        super(OrchidWeb, self).__init__()
+        super(CactusWeb, self).__init__()
         self.setupUi(self)
 
         # minimize, window, exit
-        self.pushButton.clicked.connect(self.showMinimized)
-        self.pushButton_2.clicked.connect(self.maxed_window)
-        self.pushButton_3.clicked.connect(sys.exit)
+        self.btn_minimize.clicked.connect(self.showMinimized)
+        self.btn_resize.clicked.connect(self.maxed_window)
+        self.btn_exit.clicked.connect(sys.exit)
 
         # back, forward, refresh
-        self.pushButton_4.clicked.connect(self.backward)
-        self.pushButton_5.clicked.connect(self.forward)
-        self.pushButton_6.clicked.connect(self.refresh)
+        self.btn_back.clicked.connect(self.backward)
+        self.btn_forward.clicked.connect(self.forward)
+        self.btn_reload.clicked.connect(self.refresh)
+
+        # history, downloads
+        # self.btn_downloads.clicked.connect()
+        # self.btn_history.clicked.connect()
 
         self.lineEdit.returnPressed.connect(self.load)
 
@@ -42,6 +46,8 @@ class OrchidWeb(MoveWeb, Ui_Form):
         url = QtCore.QUrl.fromUserInput(self.lineEdit.text())
         if url.isValid():
             self.webEngineView.load(url)
+        else:
+            pass
 
     def backward(self):
         self.webEngineView.page().triggerAction(QWebEnginePage.Back)
@@ -56,16 +62,16 @@ class OrchidWeb(MoveWeb, Ui_Form):
         self.lineEdit.setText(q.toString())
 
     def maxed_window(self):
-        if self.pushButton_2.isChecked():
+        if self.btn_resize.isChecked():
             self.showMaximized()
-            self.pushButton_2.setText("")
+            self.btn_resize.setText("")
         else:
             self.showNormal()
-            self.pushButton_2.setText("")
+            self.btn_resize.setText("")
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    Form = OrchidWeb()
+    Form = CactusWeb()
     Form.show()
     sys.exit(app.exec_())

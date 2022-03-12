@@ -1,12 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QUrl
+from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(800, 550)
+        Form.resize(1200, 750)
         Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
@@ -15,7 +16,7 @@ class Ui_Form(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget = QtWidgets.QWidget(Form)
         self.widget.setStyleSheet("QWidget#widget {\n"
-"    border: 4px solid black;\n"
+"    border: 4px solid rgb(45, 45, 45);\n"
 "}")
         self.widget.setObjectName("widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
@@ -26,25 +27,32 @@ class Ui_Form(object):
         self.widget_2.setMinimumSize(QtCore.QSize(0, 80))
         self.widget_2.setMaximumSize(QtCore.QSize(16777215, 80))
         self.widget_2.setStyleSheet("QWidget#widget_2 {\n"
-"    background-color: rgb(20, 20, 20);\n"
+"    background-color: #171332;\n"
 "}\n"
 "\n"
 "QPushButton {\n"
 "    background-color: rgba(0, 0, 0, 0);\n"
-"    color: rgb(144, 144, 144);\n"
-"    font: bold;\n"
+"    color:#fff;\n"
 "    font-size: 15px;\n"
 "    font-family: entypo;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    color: rgb(142, 176, 27);\n"
+"    color: #D3D3D3;\n"
+"}\n"
+"\n"
+"QPushButton#pushButton_3:hover {\n"
+"    color: #FF0000;\n"
+"}\n"
+"\n"
+"QPushButton#pushButton_3:pressed {\n"
+"    color: #FF0000;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
 "    padding-top: 5px;\n"
 "    padding-left: 5px;\n"
-"    color: rgb(91, 88, 53);\n"
+"    color: #D3D3D3;\n"
 "}")
         self.widget_2.setObjectName("widget_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_2)
@@ -52,66 +60,72 @@ class Ui_Form(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.logo = QSvgWidget("cactus.svg", self.widget_2)
+        self.logo.setMinimumSize(QtCore.QSize(25, 25))
+        self.logo.setMaximumSize(QtCore.QSize(25, 25))
+        self.logo.setObjectName("logo")
+        self.horizontalLayout.addWidget(self.logo)
         self.label_4 = QtWidgets.QLabel(self.widget_2)
         self.label_4.setMinimumSize(QtCore.QSize(200, 0))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_4.setFont(font)
-        self.label_4.setStyleSheet("color: rgb(144, 144, 144);")
+        self.label_4.setStyleSheet("color: #fff;")
         self.label_4.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout.addWidget(self.label_4)
-        self.pushButton = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.pushButton_2 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_2.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_2.setCheckable(True)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_3.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_3.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.horizontalLayout.addWidget(self.pushButton_3)
+        self.btn_minimize = QtWidgets.QPushButton(self.widget_2)
+        self.btn_minimize.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_minimize.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_minimize.setObjectName("btn_minimize")
+        self.horizontalLayout.addWidget(self.btn_minimize)
+        self.btn_resize = QtWidgets.QPushButton(self.widget_2)
+        self.btn_resize.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_resize.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_resize.setCheckable(True)
+        self.btn_resize.setObjectName("btn_resize")
+        self.horizontalLayout.addWidget(self.btn_resize)
+        self.btn_exit = QtWidgets.QPushButton(self.widget_2)
+        self.btn_exit.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_exit.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_exit.setObjectName("btn_exit")
+        self.horizontalLayout.addWidget(self.btn_exit)
         self.verticalLayout_3.addLayout(self.horizontalLayout)
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
-        self.pushButton_5 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_5.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.gridLayout.addWidget(self.pushButton_5, 0, 1, 1, 1)
-        self.pushButton_4 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_4.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_4.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.gridLayout.addWidget(self.pushButton_4, 0, 0, 1, 1)
+        self.btn_forward = QtWidgets.QPushButton(self.widget_2)
+        self.btn_forward.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_forward.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_forward.setObjectName("btn_forward")
+        self.gridLayout.addWidget(self.btn_forward, 0, 1, 1, 1)
+        self.btn_back = QtWidgets.QPushButton(self.widget_2)
+        self.btn_back.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_back.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_back.setObjectName("btn_back")
+        self.gridLayout.addWidget(self.btn_back, 0, 0, 1, 1)
         self.lineEdit = QtWidgets.QLineEdit(self.widget_2)
         self.lineEdit.setMinimumSize(QtCore.QSize(0, 25))
         self.lineEdit.setMaximumSize(QtCore.QSize(16777215, 25))
         self.lineEdit.setStyleSheet("border-radius: 5px;\n"
-"padding-;eft: 5px;")
+"margin-left: 5px;\n"
+"margin-right: 5px;")
         self.lineEdit.setObjectName("lineEdit")
         self.gridLayout.addWidget(self.lineEdit, 0, 3, 1, 1)
-        self.pushButton_6 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_6.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_6.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.gridLayout.addWidget(self.pushButton_6, 0, 2, 1, 1)
-        self.pushButton_7 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_7.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_7.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.gridLayout.addWidget(self.pushButton_7, 0, 5, 1, 1)
-        self.pushButton_8 = QtWidgets.QPushButton(self.widget_2)
-        self.pushButton_8.setMinimumSize(QtCore.QSize(25, 25))
-        self.pushButton_8.setMaximumSize(QtCore.QSize(25, 25))
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.gridLayout.addWidget(self.pushButton_8, 0, 4, 1, 1)
+        self.btn_reload = QtWidgets.QPushButton(self.widget_2)
+        self.btn_reload.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_reload.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_reload.setObjectName("btn_reload")
+        self.gridLayout.addWidget(self.btn_reload, 0, 2, 1, 1)
+        self.btn_downloads = QtWidgets.QPushButton(self.widget_2)
+        self.btn_downloads.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_downloads.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_downloads.setObjectName("btn_downloads")
+        self.gridLayout.addWidget(self.btn_downloads, 0, 5, 1, 1)
+        self.btn_history = QtWidgets.QPushButton(self.widget_2)
+        self.btn_history.setMinimumSize(QtCore.QSize(25, 25))
+        self.btn_history.setMaximumSize(QtCore.QSize(25, 25))
+        self.btn_history.setObjectName("btn_history")
+        self.gridLayout.addWidget(self.btn_history, 0, 4, 1, 1)
         self.verticalLayout_3.addLayout(self.gridLayout)
         self.verticalLayout_2.addWidget(self.widget_2)
         self.webEngineView = QWebEngineView(self.widget)
@@ -125,13 +139,13 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.label_4.setText(_translate("Form", "Orchid Web"))
-        self.pushButton.setText(_translate("Form", "-"))
-        self.pushButton_2.setText(_translate("Form", ""))
-        self.pushButton_3.setText(_translate("Form", "✕"))
-        self.pushButton_5.setText(_translate("Form", "→"))
-        self.pushButton_4.setText(_translate("Form", "←"))
-        self.pushButton_6.setText(_translate("Form", "⟲"))
-        self.pushButton_7.setText(_translate("Form", ""))
-        self.pushButton_8.setText(_translate("Form", ""))
+        Form.setWindowTitle(_translate("Form", "Cactus Web"))
+        self.label_4.setText(_translate("Form", "Cactus Web"))
+        self.btn_minimize.setText(_translate("Form", "-"))
+        self.btn_resize.setText(_translate("Form", ""))
+        self.btn_exit.setText(_translate("Form", "✕"))
+        self.btn_forward.setText(_translate("Form", "→"))
+        self.btn_back.setText(_translate("Form", "←"))
+        self.btn_reload.setText(_translate("Form", "⟲"))
+        self.btn_downloads.setText(_translate("Form", ""))
+        self.btn_history.setText(_translate("Form", ""))
