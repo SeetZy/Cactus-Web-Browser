@@ -8,12 +8,18 @@ class MoveWeb(QtWidgets.QWidget):
     def __init__(self):
         super(MoveWeb, self).__init__()
 
-    def mouse_clicked(self, event):
-        if event.buttons() == QtCore.Qt.LeftButton:
-            self.dragPosition = event.globalPos() - self.frameGeometry().topLeft()
-            event.accept()
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton:
+            if self.btn_resize.isChecked():
+                self.showNormal()
+                self.btn_resize.setText("")
+                self.dragPosition = event.globalPos() - self.frameGeometry().topLeft()
+                event.accept()
+            else:
+                self.dragPosition = event.globalPos() - self.frameGeometry().topLeft()
+                event.accept()
 
-    def mouse_moved(self, event):
+    def mouseMoveEvent(self, event):
         if event.buttons() == QtCore.Qt.LeftButton:
             self.move(event.globalPos() - self.dragPosition)
             event.accept()
@@ -57,6 +63,12 @@ class CactusWeb(MoveWeb, Ui_Form):
 
     def refresh(self):
         self.webEngineView.page().triggerAction(QWebEnginePage.Reload)
+
+    def history(self):
+        pass
+
+    def downloads(self):
+        pass
 
     def update_url(self, q):
         self.lineEdit.setText(q.toString())

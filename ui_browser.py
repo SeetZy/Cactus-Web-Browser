@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QUrl
+from PyQt5.QtGui import QIcon
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 
